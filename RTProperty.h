@@ -26,19 +26,19 @@ RTPropertySetterSemantics;
 - (BOOL)addToClass:(Class)classToAddTo;
 #endif
 
-- (NSString *)attributeEncodings;
-- (BOOL)isReadOnly;
-- (RTPropertySetterSemantics)setterSemantics;
-- (BOOL)isNonAtomic;
-- (BOOL)isDynamic;
-- (BOOL)isWeakReference;
-- (BOOL)isEligibleForGarbageCollection;
-- (SEL)customGetter;
-- (SEL)customSetter;
-- (NSString *)name;
-- (NSString *)typeEncoding;
-- (NSString *)oldTypeEncoding;
-- (NSString *)ivarName;
+@property (readonly) NSString *attributeEncodings;
+@property (readonly) BOOL isReadOnly;
+@property (readonly) RTPropertySetterSemantics setterSemantics;
+@property (readonly) BOOL isNonAtomic;
+@property (readonly) BOOL isDynamic;
+@property (readonly) BOOL isWeakReference;
+@property (readonly) BOOL isEligibleForGarbageCollection;
+@property (readonly) SEL customGetter;
+@property (readonly) SEL customSetter;
+@property (readonly) NSString *name;
+@property (readonly) NSString *typeEncoding;
+@property (readonly) NSString *oldTypeEncoding;
+@property (readonly) NSString *ivarName;
 
 @end
 

@@ -8,10 +8,12 @@
 @class RTMethod;
 @class RTUnregisteredClass;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSObject (MARuntime)
 
 // includes the receiver
-+ (NSArray *)rt_subclasses;
++ (NSArray<Class> *)rt_subclasses;
 
 + (RTUnregisteredClass *)rt_createUnregisteredSubclassNamed: (NSString *)name;
 + (Class)rt_createSubclassNamed: (NSString *)name;
@@ -21,18 +23,18 @@
 + (Class)rt_setSuperclass: (Class)newSuperclass;
 + (size_t)rt_instanceSize;
 
-+ (NSArray *)rt_protocols;
++ (NSArray<RTProtocol *> *)rt_protocols;
 
-+ (NSArray *)rt_methods;
-+ (RTMethod *)rt_methodForSelector: (SEL)sel;
++ (NSArray<RTMethod *> *)rt_methods;
++ (nullable RTMethod *)rt_methodForSelector: (SEL)sel;
 
 + (void)rt_addMethod: (RTMethod *)method;
 
 + (NSArray *)rt_ivars;
-+ (RTIvar *)rt_ivarForName: (NSString *)name;
++ (nullable RTIvar *)rt_ivarForName: (NSString *)name;
 
-+ (NSArray *)rt_properties;
-+ (RTProperty *)rt_propertyForName: (NSString *)name;
++ (NSArray<RTProperty *> *)rt_properties;
++ (nullable RTProperty *)rt_propertyForName: (NSString *)name;
 #if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1070
 + (BOOL)rt_addProperty: (RTProperty *)property;
 #endif
@@ -45,3 +47,6 @@
 - (Class)rt_setClass: (Class)newClass;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

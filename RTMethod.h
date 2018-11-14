@@ -2,10 +2,7 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
-
 @interface RTMethod : NSObject
-{
-}
 
 + (id)methodWithObjCMethod: (Method)method;
 + (id)methodWithSelector: (SEL)sel implementation: (IMP)imp signature: (NSString *)signature;
@@ -13,14 +10,13 @@
 - (id)initWithObjCMethod: (Method)method;
 - (id)initWithSelector: (SEL)sel implementation: (IMP)imp signature: (NSString *)signature;
 
-- (SEL)selector;
-- (NSString *)selectorName;
-- (IMP)implementation;
-- (NSString *)signature;
+@property (readonly) SEL selector;
+@property (readonly) NSString *selectorName;
+@property (readonly) NSString *signature;
 
 // for ObjC method instances, sets the underlying implementation
 // for selector/implementation/signature instances, just changes the pointer
-- (void)setImplementation: (IMP)newImp;
+@property IMP implementation;
 
 // easy sending of arbitrary methods with arbitrary arguments
 // a simpler alternative to NSInvocation etc.

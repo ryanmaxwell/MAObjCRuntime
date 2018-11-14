@@ -2,12 +2,13 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
+@class RTMethod;
 
 @interface RTProtocol : NSObject
 {
 }
 
-+ (NSArray *)allProtocols;
++ (NSArray<Protocol *> *)allProtocols;
 
 + (id)protocolWithObjCProtocol: (Protocol *)protocol;
 + (id)protocolWithName: (NSString *)name;
@@ -15,9 +16,10 @@
 - (id)initWithObjCProtocol: (Protocol *)protocol;
 - (id)initWithName: (NSString *)name;
 
-- (Protocol *)objCProtocol;
-- (NSString *)name;
-- (NSArray *)incorporatedProtocols;
-- (NSArray *)methodsRequired: (BOOL)isRequiredMethod instance: (BOOL)isInstanceMethod;
+@property (readonly) Protocol *objCProtocol;
+@property (readonly) NSString *name;
+@property (readonly) NSArray<Protocol *> *incorporatedProtocols;
+
+- (NSArray<RTMethod *> *)methodsRequired: (BOOL)isRequiredMethod instance: (BOOL)isInstanceMethod;
 
 @end
