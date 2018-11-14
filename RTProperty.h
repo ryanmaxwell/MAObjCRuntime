@@ -2,18 +2,13 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
-
-typedef enum
-{
+typedef NS_ENUM(NSInteger, RTPropertySetterSemantics) {
     RTPropertySetterSemanticsAssign,
     RTPropertySetterSemanticsRetain,
     RTPropertySetterSemanticsCopy
-}
-RTPropertySetterSemantics;
+};
 
 @interface RTProperty : NSObject
-{
-}
 
 + (id)propertyWithObjCProperty: (objc_property_t)property;
 + (id)propertyWithName: (NSString *)name attributes:(NSDictionary *)attributes;

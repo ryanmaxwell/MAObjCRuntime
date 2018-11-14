@@ -5,8 +5,6 @@
 @class RTMethod;
 
 @interface RTProtocol : NSObject
-{
-}
 
 + (NSArray<Protocol *> *)allProtocols;
 
