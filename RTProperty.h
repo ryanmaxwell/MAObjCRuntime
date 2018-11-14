@@ -8,6 +8,8 @@ typedef NS_ENUM(NSInteger, RTPropertySetterSemantics) {
     RTPropertySetterSemanticsCopy
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface RTProperty : NSObject
 
 + (id)propertyWithObjCProperty: (objc_property_t)property;
@@ -36,6 +38,8 @@ typedef NS_ENUM(NSInteger, RTPropertySetterSemantics) {
 @property (readonly) NSString *ivarName;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 extern NSString * const RTPropertyTypeEncodingAttribute;
 extern NSString * const RTPropertyBackingIVarNameAttribute;
