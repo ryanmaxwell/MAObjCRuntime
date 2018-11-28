@@ -2,6 +2,8 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface RTMethod : NSObject
 
 + (id)methodWithObjCMethod: (Method)method;
@@ -27,17 +29,19 @@
 // [method sendToTarget: target, RTARG(arg1), RTARG(arg2)]
 #define RT_ARG_MAGIC_COOKIE 0xdeadbeef
 #define RTARG(expr) RT_ARG_MAGIC_COOKIE, @encode(__typeof__(expr)), (__typeof__(expr) []){ expr }
-- (id)sendToTarget: (id)target, ...;
-- (void)returnValue: (void *)retPtr sendToTarget: (id)target, ...;
+- (nullable id)sendToTarget: (id)target, ...;
+- (void)returnValue: (nullable void *)retPtr sendToTarget: (id)target, ...;
 
 @end
 
 @interface NSObject (RTMethodSendingAdditions)
 
-- (id)rt_sendMethod: (RTMethod *)method, ...;
-- (void)rt_returnValue: (void *)retPtr sendMethod: (RTMethod *)method, ...;
+- (nullable id)rt_sendMethod: (RTMethod *)method, ...;
+- (void)rt_returnValue: (nullable void *)retPtr sendMethod: (RTMethod *)method, ...;
 
-- (id)rt_sendSelector: (SEL)sel, ...;
-- (void)rt_returnValue: (void *)retPtr sendSelector: (SEL)sel, ...;
+- (nullable id)rt_sendSelector: (SEL)sel, ...;
+- (void)rt_returnValue: (nullable void *)retPtr sendSelector: (SEL)sel, ...;
 
 @end
+
+NS_ASSUME_NONNULL_END
